@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nitishgouda Patil — VLSI Design Engineer</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#000;--surface:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.08);
+--glass:rgba(255,255,255,0.04);--glass-border:rgba(255,255,255,0.1);
+--text:#f0f0f2;--text-dim:rgba(255,255,255,0.6);--text-muted:rgba(255,255,255,0.35);
+--cyan:#22d3ee;--purple:#a78bfa;--pink:#ec4899;--amber:#fbbf24;
+--emerald:#34d399;--blue:#60a5fa;--rose:#fb7185;--orange:#fb923c;
+--font:-apple-system,BlinkMacSystemFont,'SF Pro Display','Inter',system-ui,sans-serif;
+--mono:'SF Mono','Fira Code','Cascadia Code',Consolas,monospace;
+}
+html{scroll-behavior:smooth;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.08) transparent}
+body{font-family:var(--font);background:#000;color:var(--text);line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:3px}
+::selection{background:rgba(34,211,238,0.25);color:#fff}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.glass{background:rgba(255,255,255,0.035);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.08);border-radius:16px}
+.gradient-text{background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.gradient-text-warm{background:linear-gradient(135deg,var(--amber),var(--pink),var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.section-title{font-size:clamp(2rem,5vw,3.2rem);font-weight:800;letter-spacing:-0.03em;margin-bottom:12px}
+.section-sub{color:var(--text-dim);font-size:1.05rem;max-width:600px;margin:0 auto 48px}
+
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse-glow{0%,100%{opacity:0.5}50%{opacity:1}}
+@keyframes slide-up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes data-flow{0%{left:-10%;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:110%;opacity:0}}
+@keyframes rotate-slow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes logo-pulse{0%,100%{filter:drop-shadow(0 0 6px rgba(34,211,238,.3))}50%{filter:drop-shadow(0 0 16px rgba(167,139,250,.5))}}
+@keyframes text-glow{0%,100%{text-shadow:0 0 8px rgba(34,211,238,.12)}50%{text-shadow:0 0 16px rgba(34,211,238,.25)}}
+@keyframes blink-cursor{0%,50%{border-right-color:var(--cyan)}51%,100%{border-right-color:transparent}}
+@keyframes scan{0%{top:0;opacity:0}5%{opacity:.6}95%{opacity:.6}100%{top:100%;opacity:0}}
+@keyframes glow-rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes chip-breathe{0%,100%{box-shadow:0 0 30px rgba(34,211,238,.05),0 0 60px rgba(45,212,191,.03)}50%{box-shadow:0 0 50px rgba(34,211,238,.1),0 0 90px rgba(45,212,191,.06)}}
+@keyframes dissect-pulse{0%,100%{box-shadow:0 0 15px rgba(34,211,238,.12),inset 0 0 15px rgba(34,211,238,.04)}50%{box-shadow:0 0 30px rgba(34,211,238,.2),inset 0 0 30px rgba(34,211,238,.06)}}
+@keyframes silicon-shimmer{0%{background-position:200% 50%}100%{background-position:-200% 50%}}
+@keyframes electron{0%{transform:rotate(0) translateX(24px) rotate(0)}100%{transform:rotate(360deg) translateX(24px) rotate(-360deg)}}
+@keyframes electron2{0%{transform:rotate(120deg) translateX(24px) rotate(-120deg)}100%{transform:rotate(480deg) translateX(24px) rotate(-480deg)}}
+@keyframes electron3{0%{transform:rotate(240deg) translateX(24px) rotate(-240deg)}100%{transform:rotate(600deg) translateX(24px) rotate(-600deg)}}
+
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.25,.1,.25,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+svg.defs{display:none}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 24px;transition:all .3s}
+nav.scrolled{background:rgba(0,0,0,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.ng-logo{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
+.ng-logo-text{display:flex;flex-direction:column;line-height:1.1}
+.ng-logo-name{font-size:22px;font-weight:900;color:white;letter-spacing:-0.03em;text-transform:uppercase}
+.nav-tabs{display:flex;gap:3px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:3px}
+.nav-tab{padding:6px 16px;border-radius:8px;font-size:11px;font-weight:600;color:var(--text-dim);cursor:pointer;transition:all .3s;border:none;background:none;text-decoration:none}
+.nav-tab:hover{color:var(--text)}
+.nav-tab.active{background:rgba(34,211,238,.1);color:var(--cyan)}
+
+.page{display:none}.page.active{display:block}
+
+/* ═══ HOME ═══ */
+.home-hero{min-height:100vh;display:flex;align-items:center;padding:160px 0 30px;position:relative;overflow:hidden}
+.home-hero-bg{position:absolute;inset:0}.home-hero-bg .orb{position:absolute;border-radius:50%;filter:blur(100px);animation:float 10s ease-in-out infinite}
+.home-hero-bg .orb:nth-child(1){width:350px;height:350px;background:rgba(34,211,238,.05);top:10%;left:10%}
+.home-hero-bg .orb:nth-child(2){width:300px;height:300px;background:rgba(167,139,250,.05);bottom:10%;right:5%;animation-delay:3s}
+.home-content{position:relative;z-index:2;display:flex;gap:60px;align-items:center;flex-wrap:wrap;flex-direction:row-reverse; justify-content: flex-end;}
+.home-left{flex:1;min-width:280px}
+.home-right{flex:0 0 280px;display:flex;flex-direction:column;align-items:center;gap:14px}
+
+.home-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;background:var(--surface);border:1px solid var(--border);margin-bottom:18px;font-size:11px;color:var(--text-dim)}
+.home-badge .bdot{width:5px;height:5px;border-radius:50%;background:var(--emerald);animation:pulse-glow 2s infinite}
+.home-name{font-size:clamp(2.5rem,6vw,4rem);font-weight:900;letter-spacing:-.04em;line-height:1.05;margin-bottom:8px}
+.home-name .first{color:white}.home-name .last{display:block}
+.home-role{font-size:clamp(1rem,2vw,1.15rem);color:var(--cyan);font-weight:600;margin-bottom:14px}
+.home-desc{color:var(--text-dim);font-size:14px;line-height:1.7;margin-bottom:20px;max-width:480px}
+.home-contact{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.home-contact a{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:8px;background:var(--surface);border:1px solid var(--border);font-size:11px;color:var(--text-dim);text-decoration:none;transition:all .3s}
+.home-contact a:hover{background:rgba(34,211,238,.06);border-color:rgba(34,211,238,.2);color:var(--cyan)}
+.typewriter-wrap{display:flex;align-items:center;gap:4px;margin-bottom:16px}
+.tw-label{font-family:var(--mono);font-size:11px;color:var(--text-muted)}
+.tw-text{font-family:var(--mono);font-size:11px;color:var(--cyan);border-right:2px solid var(--cyan);padding-right:3px;animation:blink-cursor 1s infinite;white-space:nowrap}
+
+.avatar-frame{width:240px;height:240px;border-radius:24px;background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));padding:2px;box-shadow: 0 0 30px rgba(34,211,238,0.2)}
+.avatar-inner{width:100%;height:100%;border-radius:22px;background:#000;display:flex;align-items:center;justify-content:center;overflow: hidden;}
+.avatar-img{width: 100%; height: 100%; object-fit: cover;}
+
+.home-section{padding:30px 0 60px}
+.home-section-title{font-size:1.3rem;font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:8px;color:white}
+.home-section-title::before{content:'';width:3px;height:18px;border-radius:2px;background:linear-gradient(to bottom,var(--cyan),var(--purple))}
+.edu-list{display:flex;flex-direction:column;gap:8px}
+.edu-item{padding:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.edu-info h4{font-size:14px;font-weight:700;color:white}.edu-info p{font-size:12px;color:var(--text-dim)}
+.edu-info .cgpa{font-family:var(--mono);font-size:11px;color:var(--cyan);margin-top:2px}
+.edu-year{font-family:var(--mono);font-size:12px;color:var(--purple);font-weight:600}
+.skills-grid{display:flex;flex-wrap:wrap;gap:6px}
+.skill-pill{padding:5px 12px;border-radius:8px;font-size:11px;font-weight:600;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:var(--text-dim);transition:all .3s}
+.skill-pill.hl{background:rgba(34,211,238,.08);border-color:rgba(34,211,238,.15);color:var(--cyan)}
+.project-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.project-card{padding:20px;cursor:pointer;transition:all .4s;position:relative;overflow:hidden}
+.project-card:hover{background:rgba(255,255,255,.05);transform:translateY(-2px)}
+.project-card h4{font-size:14px;font-weight:700;color:white;margin-bottom:5px}
+.project-card p{font-size:12px;color:var(--text-dim);line-height:1.5}
+.project-card .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.project-card .tag{font-size:9px;padding:2px 7px;border-radius:4px;font-weight:600}
+.project-card .featured{position:absolute;top:0;right:0;padding:3px 10px;border-radius:0 14px 0 8px;font-size:8px;font-weight:700;background:linear-gradient(135deg,var(--cyan),var(--purple));color:white}
+
+.btn-primary{padding:12px 28px;border-radius:100px;background:var(--cyan);color:#000;font-weight:700;font-size:13px;text-decoration:none;display:inline-block;margin-top:10px;transition:all 0.3s}
+.btn-primary:hover{box-shadow:0 0 20px rgba(34,211,238,0.4);transform:translateY(-2px)}
+
+/* ═══ UPDATED M1 STYLE CHIP ═══ */
+.chip-section{padding:100px 0 80px}
+.chip-flex{display:flex;gap:48px;align-items:flex-start;flex-wrap:wrap;justify-content:center}
+.chip-col-left{flex:0 0 520px}
+.chip-col-right{flex:1;min-width:300px;max-width:440px;position:sticky;top:100px}
+
+/* Chip container */
+.chip-wrap{position:relative;width:520px;height:520px}
+
+/* M1 STYLE GLOW - Square Radius */
+.chip-glow{position:absolute;inset:-4px;border-radius:0;
+  background: conic-gradient(from 180deg, #ff4d4d, #f9cb28, #ff4d4d, #7928ca, #0070f3, #7928ca);
+  filter: blur(50px);opacity:0.8;
+  animation: glow-rotate 10s linear infinite;z-index:0}
+
+/* Die body - Solid Black & Square */
+.chip-die{position:absolute;inset:0;border-radius:0;background:#000;z-index:1;overflow:hidden;border:1px solid #1a1a1a}
+
+/* State 1: SEALED — M1 Matte Black Look & Square */
+.chip-sealed{position:absolute;inset:0;z-index:100;border-radius:0;cursor:pointer;transition:all .6s;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background: #080808;}
+
+/* Subtle lighting gradient */
+.chip-sealed::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 60%);z-index:1}
+
+.chip-sealed:hover{background:#0a0a0a}
+
+.sealed-name{position:relative;z-index:10;text-align:center}
+.sealed-name .sn-title{font-family:-apple-system, sans-serif;font-size:64px;font-weight:700;
+  background: linear-gradient(180deg, #ffffff, #a1a1aa);
+  -webkit-background-clip: text;background-clip: text;-webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;margin-bottom: 8px;}
+.sealed-name .sn-ver{font-family:var(--mono);font-size:12px;color:rgba(255,255,255,.4);letter-spacing:0.1em;text-transform:uppercase}
+
+.sealed-center{position:relative;z-index:10;text-align:center;margin-top:30px}
+.dissect-btn{padding:12px 32px;border-radius:100px;border:none;background:rgba(255,255,255,.1);color:white;font-size:13px;font-weight:600;cursor:pointer;transition:all .3s;backdrop-filter:blur(10px)}
+.dissect-btn:hover{background:rgba(255,255,255,.2);transform:scale(1.05)}
+
+/* Hidden when dissected */
+.chip-wrap.open .chip-sealed{opacity:0;pointer-events:none;transform:scale(1.05)}
+
+/* State 2: Blocks layer */
+.blocks-layer{position:absolute;inset:0;z-index:10;opacity:0;pointer-events:none;transition:all .6s .3s;transform:scale(.95);background:#000}
+.chip-wrap.open .blocks-layer{opacity:1;pointer-events:auto;transform:scale(1)}
+
+/* Module blocks - COMPACT, GRADIENT GRID LINES & GLOW */
+.mb{position:absolute;cursor:pointer;z-index:10;transition:all .2s;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2px;
+  /* Gradient Borders via background clip */
+  background: linear-gradient(#050505, #050505) padding-box,
+              linear-gradient(135deg, var(--cyan), var(--purple)) border-box;
+  border: 1px solid transparent;
+}
+.mb:hover{z-index:20}
+.mb:hover .mb-name{color:white}
+
+.mb.active{z-index:25;
+  /* Two-color gradient glow */
+  box-shadow: 0 0 20px var(--cyan), 0 0 40px var(--pink);
+  /* Brighter inner background for active state */
+  background: linear-gradient(rgba(34,211,238,0.1), rgba(34,211,238,0.1)) padding-box,
+              linear-gradient(135deg, var(--cyan), var(--pink)) border-box;
+}
+.mb.active .mb-name{color:var(--cyan)}
+.mb.active .mb-icon{filter:drop-shadow(0 0 5px rgba(34,211,238,.4))}
+
+/* Make other modules visible but dimmed */
+.mb.dimmed{opacity:0.6;filter:grayscale(1) brightness(0.7)}
+
+.mb-icon{font-size:14px;margin-bottom:4px;opacity:0.8}
+.mb-name{font-size:10px;font-weight:600;color:#666;line-height:1;font-family:var(--font);text-transform:uppercase;letter-spacing:0.05em}
+
+/* Detail panel — RIGHT SIDE */
+.det-empty{padding:40px 0}
+.det-empty h3{font-size:1.2rem;font-weight:700;color:white;margin-bottom:8px}
+.det-empty p{font-size:13px;color:var(--text-dim);line-height:1.6}
+.det{display:none;animation:slide-up .5s ease-out}.det.vis{display:block}
+.det h2{font-size:clamp(1.5rem,2.8vw,2rem);font-weight:800;color:white;letter-spacing:-.02em;margin-bottom:4px}
+.det .det-arch{font-size:14px;font-weight:600;color:var(--cyan);margin-bottom:2px}
+.det .det-file{font-family:var(--mono);font-size:11px;color:var(--text-muted)}
+.det-rule{width:32px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--purple));border-radius:1px;margin:20px 0}
+.det-desc{font-size:15px;color:var(--text-dim);line-height:1.75;margin-bottom:22px}
+.det-desc strong{color:white}.det-desc code{font-family:var(--mono);font-size:12px;color:var(--cyan);background:rgba(34,211,238,.06);padding:1px 5px;border-radius:3px}
+.det-specs{list-style:none;margin-bottom:22px}
+.det-specs li{font-size:13px;color:var(--text-dim);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:8px}
+.det-specs li::before{content:'';width:5px;height:5px;border-radius:50%;background:rgba(34,211,238,.4);flex-shrink:0}
+.det-code{padding:16px;border-radius:10px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);font-family:var(--mono);font-size:11px;line-height:1.8;color:var(--text-dim);overflow-x:auto}
+.det-code .kw{color:#f472b6}.det-code .inst{color:#c084fc;font-weight:600}.det-code .port{color:#67e8f9}.det-code .num{color:#fcd34d}
+.det-close{display:inline-flex;gap:5px;margin-top:18px;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.08);background:none;color:var(--text-muted);font-size:11px;font-weight:600;cursor:pointer;transition:all .3s}
+.det-close:hover{border-color:rgba(255,255,255,.15);color:var(--text-dim)}
+
+.chip-legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:18px;opacity:0;transition:opacity .5s .5s}
+.chip-wrap.open~.chip-legend{opacity:1}
+.lg-item{display:flex;align-items:center;gap:4px;font-size:9px;color:var(--text-muted);cursor:pointer;font-family:var(--mono);transition:color .3s}
+.lg-item:hover{color:var(--cyan)}
+
+/* ═══ OTHER SECTIONS ═══ */
+.port-section{padding:100px 0}
+.port-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.port-card{padding:20px;cursor:pointer;transition:all .4s;position:relative;overflow:hidden}
+.port-card:hover{background:rgba(255,255,255,.05);transform:translateY(-2px)}
+.port-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--card-accent);opacity:0;transition:opacity .4s}
+.port-card:hover::after{opacity:.5}
+.port-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.port-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.port-name{font-family:var(--mono);font-size:14px;font-weight:600;color:white}
+.port-badge{display:inline-flex;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600;margin-left:auto}
+.port-badge.input{background:rgba(34,211,238,.1);color:var(--cyan);border:1px solid rgba(34,211,238,.2)}
+.port-badge.output{background:rgba(52,211,153,.1);color:var(--emerald);border:1px solid rgba(52,211,153,.2)}
+.port-width{font-family:var(--mono);font-size:11px;color:var(--text-muted);margin-bottom:8px}
+.port-desc{font-size:13px;color:var(--text-dim);line-height:1.55}
+.port-code{margin-top:12px;padding:10px 14px;border-radius:10px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.05);font-family:var(--mono);font-size:11px;color:var(--text-dim);display:none;line-height:1.7}
+.port-card.expanded .port-code{display:block;animation:slide-up .3s ease-out}
+.port-section-group{margin-bottom:48px}
+.port-section-group h3{font-size:1.1rem;font-weight:700;color:white;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.port-section-group h3 .accent{width:4px;height:20px;border-radius:2px}
+.port-section-group p{color:var(--text-dim);font-size:.9rem;margin-bottom:20px}
+
+.arch-section{padding:100px 0}
+.arch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.module-card{padding:24px;cursor:pointer;position:relative;overflow:hidden;transition:all .4s}
+.module-card:hover{transform:translateY(-3px);background:rgba(255,255,255,.05)}
+.module-header{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.module-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.module-title{font-size:16px;font-weight:700;color:white}
+.module-instance{font-family:var(--mono);font-size:11px;color:var(--text-muted)}
+.module-desc{font-size:13px;color:var(--text-dim);line-height:1.6;margin-bottom:16px}
+.module-specs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.spec-pill{padding:4px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--border);font-size:11px;color:var(--text-dim)}
+.module-code{padding:16px;border-radius:12px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.05);font-family:var(--mono);font-size:11px;line-height:1.8;color:var(--text-dim);overflow-x:auto;display:none}
+.module-card.expanded .module-code{display:block;animation:slide-up .3s ease-out}
+.module-expand-hint{font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:6px}
+.module-expand-hint .arrow{transition:transform .3s;display:inline-block}
+.module-card.expanded .module-expand-hint .arrow{transform:rotate(180deg)}
+
+.datapath-section{padding:100px 0}
+.stage-card{padding:24px;transition:all .5s;cursor:pointer}
+.stage-card:hover{background:rgba(255,255,255,.05)}
+.stage-number{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-bottom:12px}
+.stage-label{font-family:var(--mono);font-size:13px;font-weight:600;margin-bottom:4px}
+.stage-sublabel{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+.stage-desc{font-size:13px;color:var(--text-dim);line-height:1.6}
+.stage-arrow{color:var(--text-muted);font-size:24px;animation:float 2s infinite;text-align:center;padding:8px 0}
+.flow-demo{position:relative;height:60px;border-radius:16px;overflow:hidden;background:rgba(0,0,0,.2);border:1px solid var(--border)}
+.flow-track{position:absolute;top:50%;left:0;right:0;height:2px;background:rgba(255,255,255,.05);transform:translateY(-50%)}
+.flow-particle{position:absolute;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;animation:data-flow 3s linear infinite}
+.flow-particle:nth-child(2){animation-delay:.8s}.flow-particle:nth-child(3){animation-delay:1.6s}
+.flow-label{position:absolute;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:10px;color:var(--text-muted);padding:4px 8px;background:var(--surface);border-radius:6px;border:1px solid var(--border)}
+
+.sync-section{padding:80px 0}
+.sync-visual{display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:center}
+.sync-block{display:flex;align-items:center;gap:20px}
+.ff-box{width:72px;height:72px;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid}
+.ff-box .label{font-family:var(--mono);font-size:12px;font-weight:600}
+.ff-box .sub{font-size:9px;margin-top:2px}
+.ff-arrow{color:var(--text-muted);font-size:20px;animation:float 1.5s infinite}
+.sync-code{flex:1;min-width:300px;padding:20px;border-radius:14px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.06);font-family:var(--mono);font-size:11px;line-height:1.8;color:var(--text-dim)}
+
+.code-section{padding:100px 0}
+.code-explorer{display:flex;gap:24px;align-items:flex-start}
+.code-nav{width:340px;flex-shrink:0;position:sticky;top:100px;max-height:calc(100vh - 140px);overflow-y:auto;scrollbar-width:none}
+.code-nav::-webkit-scrollbar{display:none}
+.code-nav-item{padding:16px 20px;border-radius:14px;cursor:pointer;transition:all .4s;margin-bottom:8px;background:var(--glass);border:1px solid var(--glass-border);position:relative;overflow:hidden}
+.code-nav-item:hover{background:rgba(255,255,255,.06)}
+.code-nav-item.active{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+.code-nav-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:0 2px 2px 0}
+.nav-item-num{width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-right:10px}
+.nav-item-title{font-size:13px;font-weight:600;color:white}
+.nav-item-desc{font-size:11px;color:var(--text-dim);margin-top:6px;line-height:1.5}
+.nav-item-lines{font-family:var(--mono);font-size:10px;color:var(--text-muted);margin-top:6px}
+.code-panel{flex:1;position:sticky;top:100px;max-height:calc(100vh - 140px);border-radius:16px;overflow:hidden;background:var(--glass);border:1px solid var(--glass-border)}
+.code-panel-header{display:flex;align-items:center;gap:8px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.05)}
+.window-dots{display:flex;gap:6px}.window-dot{width:10px;height:10px;border-radius:50%}
+.code-panel-filename{font-family:var(--mono);font-size:12px;color:var(--text-muted);margin-left:8px}
+.code-panel-tag{margin-left:auto;font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:6px}
+.code-content{overflow:auto;max-height:calc(100vh - 200px);padding:8px 0;scrollbar-width:thin}
+.code-line{display:flex;font-family:var(--mono);font-size:12px;line-height:2;transition:background .4s;border-left:2px solid transparent;padding-right:16px}
+.code-line.highlighted{background:rgba(34,211,238,.06);border-left-color:var(--highlight-color,var(--cyan))}
+.code-line-num{width:48px;text-align:right;padding-right:16px;color:rgba(255,255,255,.15);user-select:none;flex-shrink:0}
+.code-line-text{white-space:pre;color:rgba(255,255,255,.6)}
+.kw{color:#f472b6}.cm{color:rgba(52,211,153,.6);font-style:italic}.num{color:#fcd34d}.inst{color:#c084fc;font-weight:600}.port{color:#67e8f9}
+
+.line-explorer-section{padding:100px 0}
+.line-explorer-inner{display:flex;gap:24px}
+.line-list{width:400px;flex-shrink:0;max-height:80vh;overflow-y:auto;scrollbar-width:thin;position:sticky;top:100px}
+.line-item{padding:14px 18px;border-radius:12px;cursor:pointer;transition:all .3s;margin-bottom:6px;border:1px solid transparent}
+.line-item:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.06)}
+.line-item.active{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12)}
+.line-item-header{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.line-item-range{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.05);color:var(--text-muted)}
+.line-item-tag{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600}
+.line-item-title{font-size:13px;font-weight:600;color:white}
+.line-item-desc{font-size:12px;color:var(--text-dim);line-height:1.5;margin-top:4px}
+
+.specs-section{padding:100px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:48px}
+.stat-card{padding:24px;text-align:center}
+.stat-value{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;color:white}
+.stat-label{font-size:13px;color:var(--text-dim);font-weight:600}
+.stat-sub{font-size:11px;color:var(--text-muted)}
+.specs-table-wrap{overflow-x:auto;border-radius:16px}
+.specs-table{width:100%;border-collapse:collapse}
+.specs-table th{padding:14px 20px;text-align:left;font-size:11px;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border)}
+.specs-table td{padding:12px 20px;border-bottom:1px solid rgba(255,255,255,.04);font-size:13px;color:var(--text-dim)}
+.specs-table .signal{font-family:var(--mono);color:var(--cyan);font-weight:500}
+.specs-table .dir-badge{display:inline-flex;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600}
+.specs-table .dir-badge.in{background:rgba(251,191,36,.1);color:var(--amber);border:1px solid rgba(251,191,36,.2)}
+.specs-table .dir-badge.out{background:rgba(52,211,153,.1);color:var(--emerald);border:1px solid rgba(52,211,153,.2)}
+.specs-table .domain{font-family:var(--mono);font-size:11px;color:var(--purple)}
+.led-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:24px}
+.led-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;background:rgba(255,255,255,.025)}
+.led-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.led-dot.active{animation:pulse-glow 2s infinite}
+.led-bit{font-family:var(--mono);font-size:11px;color:var(--text-muted)}
+.led-name{font-size:13px;color:var(--text-dim)}
+
+footer{padding:80px 24px;border-top:1px solid rgba(255,255,255,.04);text-align:center}
+footer h3{font-size:1.5rem;font-weight:800;margin-bottom:8px}
+footer .footer-sub{color:var(--text-muted);font-size:13px;margin-bottom:24px}
+footer .footer-tags{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+footer .footer-tags span{color:var(--text-muted);font-size:12px}
+footer .credit{color:rgba(255,255,255,.1);font-size:11px}
+
+@media(max-width:960px){.chip-flex{flex-direction:column;align-items:center}.chip-col-left{flex:none;width:100%;max-width:440px}.chip-wrap{width:100%;height:auto;aspect-ratio:1}.chip-col-right{position:relative;top:0;max-width:100%}.code-explorer,.line-explorer-inner{flex-direction:column}.code-nav,.line-list{width:100%;position:relative;top:0;max-height:none}.code-panel{position:relative;top:0;max-height:500px}.home-content{flex-direction:column-reverse;text-align:center}.home-contact{justify-content:center}.sync-visual{flex-direction:column}}
+@media(max-width:600px){.port-grid{grid-template-columns:1fr}.arch-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:1fr}.ng-logo-text{display:none}}
+</style>
+</head>
+<body>
+
+<svg class="defs" xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="ngG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#22d3ee"/><stop offset="50%" stop-color="#a78bfa"/><stop offset="100%" stop-color="#ec4899"/></linearGradient>
+<symbol id="ng-logo" viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28" rx="6" fill="#0a0a0a" stroke="url(#ngG)" stroke-width="1.5"/><text x="20" y="23.5" font-family="system-ui" font-weight="900" font-size="11" fill="url(#ngG)" text-anchor="middle">NG</text></symbol>
+<symbol id="ng-lg" viewBox="0 0 80 80"><rect x="12" y="12" width="56" height="56" rx="12" fill="#0a0a0a" stroke="url(#ngG)" stroke-width="2"/><text x="40" y="44" font-family="system-ui" font-weight="900" font-size="18" fill="url(#ngG)" text-anchor="middle">NG</text><text x="40" y="53" font-family="system-ui" font-weight="600" font-size="5" fill="rgba(255,255,255,.2)" text-anchor="middle" letter-spacing=".08em">VLSI DESIGN</text></symbol>
+</defs></svg>
+
+<nav id="navbar"><div class="nav-inner">
+<a class="ng-logo" onclick="showPage('home')"><div class="ng-logo-text"><span class="ng-logo-name">NITISHGOUDA</span></div></a>
+<div class="nav-tabs"><button class="nav-tab active" onclick="showPage('home')">🏠 Home</button><button class="nav-tab" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">📂 Projects</button></div>
+</div></nav>
+
+<div class="page active" id="page-home"><div class="container">
+<section class="home-hero"><div class="home-hero-bg"><div class="orb"></div><div class="orb"></div></div>
+<div class="home-content">
+<div class="home-left">
+<div class="home-badge"><span class="bdot"></span>Open to Internships & Opportunities</div>
+<h1 class="home-name"><span class="first">Architecting the</span><span class="last gradient-text">Future of Silicon.</span></h1>
+<div class="home-role">Third-Year B.E. Electronics (VLSI Design & Technology)</div>
+<div class="typewriter-wrap"><span class="tw-label">~/skills $&nbsp;</span><span class="tw-text" id="tw">CMOS Layout</span></div>
+<p class="home-desc">VLSI Design student at KLE Technological University, Hubballi. Building hardware that thinks — from CMOS layouts to neural network accelerators on silicon.</p>
+<a href="#projects" class="btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})">View Projects</a>
+</div>
+<div class="home-right"><div class="avatar-frame"><div class="avatar-inner"><img src="profile.jpg" alt="Nitishgouda Patil" class="avatar-img"></div></div><div style="text-align:center;font-family:var(--mono);font-size:10px;color:var(--text-muted)">KLE Tech · Hubballi<br><span style="color:var(--cyan)">CGPA: 7.39</span></div></div>
+</div>
+</section>
+<section class="home-section reveal"><div class="home-section-title">Education</div><div class="edu-list">
+<div class="glass edu-item"><div class="edu-info"><h4>KLE Technological University (BVB), Hubli</h4><p>B.E. Electronics (VLSI Design & Technology)</p><div class="cgpa">CGPA: 7.39 (6th Sem)</div></div><div class="edu-year">2023–2026</div></div>
+<div class="glass edu-item"><div class="edu-info"><h4>KLE C.I Munavalli Polytechnic, Hubli</h4><p>Diploma in Electronics & Communication — 60%</p></div><div class="edu-year">2019–2023</div></div>
+<div class="glass edu-item"><div class="edu-info"><h4>Seventh-Day Adventist High School, Laxmeshwar</h4><p>10th/SSLC — 76.16%</p></div><div class="edu-year">2015–2016</div></div>
+</div></section>
+<section class="home-section reveal"><div class="home-section-title">Technical Skills</div><div class="skills-grid">
+<span class="skill-pill hl">CMOS Layout</span><span class="skill-pill hl">Verilog HDL</span><span class="skill-pill hl">LT-Spice</span><span class="skill-pill">Proteus</span><span class="skill-pill hl">Cadence ORCAD</span><span class="skill-pill">APD Tool</span><span class="skill-pill hl">Analog Design</span><span class="skill-pill">Cadence Virtuoso</span><span class="skill-pill">FPGA</span><span class="skill-pill">RTL Design</span><span class="skill-pill">DFT</span><span class="skill-pill">YOLO/OpenCV</span>
+</div></section>
+<section class="home-section reveal" id="projects"><div class="home-section-title">Projects</div><div class="project-grid">
+<div class="glass project-card" onclick="showPage('proj')"><div class="featured">★ FEATURED</div><h4>🧠 BNN Vision Processor (chip_top.v)</h4><p>14-module fabrication-ready SoC. 32 XNOR PEs, 80-class detection, 640KB SRAM. Interactive chip floorplan + full code explorer.</p><div class="tags"><span class="tag" style="background:rgba(34,211,238,.08);color:var(--cyan)">Verilog</span><span class="tag" style="background:rgba(167,139,250,.08);color:var(--purple)">BNN</span><span class="tag" style="background:rgba(236,72,153,.08);color:var(--pink)">28nm</span></div></div>
+<div class="glass project-card"><h4>🌡 Temp-Controlled Fan System</h4><p>Compact PCB with heat sensor, auto fan switching at user-set threshold.</p><div class="tags"><span class="tag" style="background:rgba(52,211,153,.08);color:var(--emerald)">PCB</span><span class="tag" style="background:rgba(251,191,36,.08);color:var(--amber)">Analog</span></div></div>
+<div class="glass project-card"><h4>⚙ CMOS Full Adder (180nm)</h4><p>Layout, DRC, LVS, transient sims. Tools: Cadence Virtuoso.</p><div class="tags"><span class="tag" style="background:rgba(167,139,250,.08);color:var(--purple)">Cadence</span><span class="tag" style="background:rgba(96,165,250,.08);color:var(--blue)">180nm</span></div></div>
+<div class="glass project-card"><h4>🔋 Battery Protection Unit</h4><p>Over-current comparator with hysteresis. OrCAD Capture.</p><div class="tags"><span class="tag" style="background:rgba(251,191,36,.08);color:var(--amber)">OrCAD</span></div></div>
+<div class="glass project-card"><h4>⚽ Football Analysis (YOLO+OpenCV)</h4><p>Real-time player/ball detection, jersey clustering, speed tracking.</p><div class="tags"><span class="tag" style="background:rgba(236,72,153,.08);color:var(--pink)">YOLO</span><span class="tag" style="background:rgba(96,165,250,.08);color:var(--blue)">OpenCV</span></div></div>
+</div></section>
+</div></div>
+
+<div class="page" id="page-proj">
+
+<section class="chip-section" id="floorplan"><div class="container">
+<div class="reveal" style="text-align:center;margin-bottom:40px">
+<h2 class="section-title">The <span class="gradient-text">Silicon Die</span></h2>
+<p class="section-sub">Explore the BNN vision processor from sealed package to individual transistor blocks.</p>
+</div>
+<div class="chip-flex">
+<div class="chip-col-left">
+<div class="chip-wrap" id="chipWrap">
+<div class="chip-glow"></div>
+<div class="chip-die">
+<div class="chip-sealed" id="chipSealed" onclick="dissectChip()">
+<div class="sealed-name"><div class="sn-title">chip_top</div><div class="sn-ver">v1.0 · 28nm · 14 Modules</div></div>
+<div class="sealed-center">
+<button class="dissect-btn" onclick="event.stopPropagation();dissectChip()">⬡ Dissect Chip</button>
+</div>
+</div>
+<div class="blocks-layer" id="blocksLayer"></div>
+</div>
+</div>
+<div class="chip-legend" id="chipLegend"></div>
+</div>
+<div class="chip-col-right">
+<div class="det-empty" id="detEmpty"><h3>Select a Module</h3><p>Click "Dissect Chip" to reveal the internal architecture, then click any block to explore its design, signal connections, and Verilog implementation.</p></div>
+<div class="det" id="detPanel"></div>
+</div>
+</div>
+</div></section>
+
+<section class="port-section" id="ports"><div class="container"><div class="reveal" style="text-align:center"><h2 class="section-title">Every <span class="gradient-text">Pin</span> Explained</h2><p class="section-sub">Click any port to see its exact Verilog declaration and purpose.</p></div><div id="portContainer"></div></div></section>
+
+<section class="arch-section" id="architecture"><div class="container"><div class="reveal" style="text-align:center"><h2 class="section-title">Inside the <span class="gradient-text">Architecture</span></h2><p class="section-sub">Tap each module to reveal its Verilog instantiation.</p></div><div class="arch-grid" id="archGrid"></div></div></section>
+
+<section class="datapath-section" id="datapath"><div class="container"><div class="reveal" style="text-align:center"><h2 class="section-title">The <span class="gradient-text-warm">Data Path</span></h2><p class="section-sub">Follow pixel data from input through inference to detection output.</p></div><div id="datapathContainer"></div>
+<div class="flow-demo reveal" style="margin-top:48px"><div class="flow-track"></div><div class="flow-particle" style="background:radial-gradient(circle,var(--cyan),transparent);box-shadow:0 0 12px var(--cyan)"></div><div class="flow-particle" style="background:radial-gradient(circle,var(--purple),transparent);box-shadow:0 0 12px var(--purple)"></div><div class="flow-particle" style="background:radial-gradient(circle,var(--pink),transparent);box-shadow:0 0 12px var(--pink)"></div><div class="flow-label" style="left:5%">pixel_data</div><div class="flow-label" style="left:30%">sync_2ff</div><div class="flow-label" style="left:55%">detector_core</div><div class="flow-label" style="left:82%">bbox_out</div></div></div></section>
+
+<section class="sync-section" id="sync-detail"><div class="container"><div class="reveal"><div class="glass" style="padding:32px"><h3 style="font-size:1.3rem;font-weight:700;margin-bottom:6px;color:white"><span class="gradient-text">2FF Synchronizer</span> — The CDC Guardian</h3><p style="color:var(--text-dim);font-size:13px;margin-bottom:24px">Eight parallel instances handle each bit of pixel_data, plus dedicated synchronizers for pixel_valid and frame_start.</p><div class="sync-visual"><div class="sync-block"><div class="ff-box" style="background:rgba(34,211,238,0.06);border-color:rgba(34,211,238,0.2)"><span class="label" style="color:var(--cyan)">D</span><span class="sub" style="color:var(--text-muted)">async_in</span></div><span class="ff-arrow">→</span><div class="ff-box" style="background:rgba(167,139,250,0.06);border-color:rgba(167,139,250,0.2);animation:pulse-glow 2s infinite"><span class="label" style="color:var(--purple)">FF₁</span><span class="sub" style="color:var(--text-muted)">ff1</span></div><span class="ff-arrow">→</span><div class="ff-box" style="background:rgba(52,211,153,0.06);border-color:rgba(52,211,153,0.2);animation:pulse-glow 2s infinite .5s"><span class="label" style="color:var(--emerald)">FF₂</span><span class="sub" style="color:var(--text-muted)">sync_out</span></div></div><div class="sync-code"><span class="kw">module</span> <span class="inst">sync_2ff</span>(<br>&nbsp;&nbsp;<span class="kw">input</span> <span class="kw">wire</span> clk, rst_n,<br>&nbsp;&nbsp;<span class="kw">input</span> <span class="kw">wire</span> async_in,<br>&nbsp;&nbsp;<span class="kw">output</span> <span class="kw">reg</span> sync_out<br>);<br>&nbsp;&nbsp;<span class="kw">reg</span> ff1;<br>&nbsp;&nbsp;<span class="kw">always</span> @(<span class="kw">posedge</span> clk <span class="kw">or negedge</span> rst_n)<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">if</span> (!rst_n) {ff1,sync_out} &lt;= <span class="num">2'b0</span>;<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">else</span> {sync_out,ff1} &lt;= {ff1,async_in};<br><span class="kw">endmodule</span></div></div></div></div></div></section>
+
+<section class="code-section" id="code-explorer"><div class="container"><div class="reveal" style="text-align:center"><h2 class="section-title"><span class="gradient-text">Code Explorer</span></h2><p class="section-sub">Click a section to highlight the code. Every block explained.</p></div><div class="code-explorer"><div class="code-nav" id="codeNav"></div><div class="code-panel"><div class="code-panel-header"><div class="window-dots"><div class="window-dot" style="background:rgba(239,68,68,.6)"></div><div class="window-dot" style="background:rgba(234,179,8,.6)"></div><div class="window-dot" style="background:rgba(34,197,94,.6)"></div></div><span class="code-panel-filename">chip_top.v</span><span class="code-panel-tag" id="codeTag" style="background:rgba(34,211,238,.1);color:var(--cyan)">Module Declaration</span></div><div class="code-content" id="codeContent"></div></div></div></div></section>
+
+<section class="line-explorer-section" id="line-by-line"><div class="container"><div class="reveal" style="text-align:center"><h2 class="section-title">Line-by-Line <span class="gradient-text-warm">Deep Dive</span></h2><p class="section-sub">Every single line of chip_top.v explained in detail.</p></div><div class="line-explorer-inner"><div class="line-list" id="lineList"></div><div class="line-detail-panel" style="flex:1;min-width:0"><div class="code-panel" style="position:sticky;top:100px;max-height:calc(100vh - 140px)"><div class="code-panel-header"><div class="window-dots"><div class="window-dot" style="background:rgba(239,68,68,.6)"></div><div class="window-dot" style="background:rgba(234,179,8,.6)"></div><div class="window-dot" style="background:rgba(34,197,94,.6)"></div></div><span class="code-panel-filename">chip_top.v — Full Source</span></div><div class="code-content" id="lineCodeContent"></div></div></div></div></div></section>
+
+<section class="specs-section" id="specs"><div class="container"><div class="reveal" style="text-align:center"><h2 class="section-title"><span class="gradient-text-warm">Technical Specifications</span></h2><p class="section-sub">Complete signal interface for the detection pipeline.</p></div><div class="stats-grid reveal"><div class="glass stat-card"><div class="stat-value">256×256</div><div class="stat-label">Image Size</div><div class="stat-sub">pixels</div></div><div class="glass stat-card"><div class="stat-value">80</div><div class="stat-label">Classes</div><div class="stat-sub">object types</div></div><div class="glass stat-card"><div class="stat-value">32</div><div class="stat-label">Processing Elements</div><div class="stat-sub">parallel PEs</div></div><div class="glass stat-card"><div class="stat-value">640 KB</div><div class="stat-label">Total SRAM</div><div class="stat-sub">512KB + 128KB</div></div></div><div class="reveal"><div class="glass specs-table-wrap"><table class="specs-table" id="specsTable"></table></div></div><div class="reveal" style="margin-top:48px"><div class="glass" style="padding:28px"><h3 style="font-size:1.1rem;font-weight:700;margin-bottom:6px;color:white">Status LED Mapping — <span style="font-family:var(--mono);color:var(--cyan);font-size:13px">status_led[3:0]</span></h3><div class="led-grid"><div class="led-item"><div class="led-dot active" style="background:var(--cyan);box-shadow:0 0 8px var(--cyan)"></div><div><div class="led-bit">[3]</div><div class="led-name">PLL Locked</div></div></div><div class="led-item"><div class="led-dot active" style="background:var(--emerald);box-shadow:0 0 8px var(--emerald)"></div><div><div class="led-bit">[2]</div><div class="led-name">Power Good</div></div></div><div class="led-item"><div class="led-dot" style="background:var(--amber);opacity:.3"></div><div><div class="led-bit">[1]</div><div class="led-name">MBIST Pass</div></div></div><div class="led-item"><div class="led-dot active" style="background:var(--pink);box-shadow:0 0 8px var(--pink)"></div><div><div class="led-bit">[0]</div><div class="led-name">Detection Valid</div></div></div></div><div style="margin-top:16px;padding:12px 16px;border-radius:10px;background:rgba(0,0,0,.3);font-family:var(--mono);font-size:11px;color:var(--text-dim)"><span class="kw">assign</span> status_led = {pll_locked, power_good, mbist_pass, detection_valid_int};</div></div></div></div></section>
+
+<div style="position:fixed;top:58px;left:0;right:0;z-index:999;display:none;padding:0 24px" id="projNav"><div style="max-width:1200px;margin:0 auto;display:flex;gap:16px;align-items:center;padding:8px 16px;background:rgba(0,0,0,.92);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.05);border-radius:12px;overflow-x:auto"><a href="#floorplan" style="color:var(--text-dim);text-decoration:none;font-size:11px;font-weight:500;white-space:nowrap">Floorplan</a><a href="#ports" style="color:var(--text-dim);text-decoration:none;font-size:11px;font-weight:500;white-space:nowrap">Ports</a><a href="#architecture" style="color:var(--text-dim);text-decoration:none;font-size:11px;font-weight:500;white-space:nowrap">Architecture</a><a href="#datapath" style="color:var(--text-dim);text-decoration:none;font-size:11px;font-weight:500;white-space:nowrap">Data Path</a><a href="#code-explorer" style="color:var(--text-dim);text-decoration:none;font-size:11px;font-weight:500;white-space:nowrap">Code</a><a href="#line-by-line" style="color:var(--text-dim);text-decoration:none;font-size:11px;font-weight:500;white-space:nowrap">Deep Dive</a><a href="#specs" style="color:var(--text-dim);text-decoration:none;font-size:11px;font-weight:500;white-space:nowrap">Specs</a></div></div>
+
+</div>
+
+<footer><h3><span class="gradient-text">Nitishgouda Patil</span></h3><p class="footer-sub">Interactive Silicon Architecture Explorer · chip_top.v</p><div class="footer-tags"><span>Verilog HDL</span><span>BNN</span><span>DFT</span><span>JTAG 1149.1</span><span>MBIST</span></div><p class="credit">Designed by Nitishgouda Patil · Pure HTML/CSS/JS</p></footer>
+
+<script>
+function showPage(p){document.querySelectorAll('.page').forEach(e=>e.classList.remove('active'));document.getElementById('page-'+p).classList.add('active');document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.nav-tab').forEach(t=>{if((p==='home'&&t.textContent.includes('Home'))||(p==='proj'&&t.textContent.includes('Projects')))t.classList.add('active')});document.getElementById('projNav').style.display=p==='proj'?'block':'none';window.scrollTo({top:0});setTimeout(initReveal,80)}
+
+const phr=['CMOS Layout','Verilog HDL','LT-Spice','Cadence ORCAD','Analog Design','FPGA','RTL Design','DFT & MBIST','Binary Neural Nets'];
+let ti=0,tc=0,td=false;function twf(){const e=document.getElementById('tw'),p=phr[ti];if(!td){e.textContent=p.substring(0,tc+1);tc++;if(tc===p.length){setTimeout(()=>{td=true;twf()},2e3);return}}else{e.textContent=p.substring(0,tc-1);tc--;if(!tc){td=false;ti=(ti+1)%phr.length}}setTimeout(twf,td?30:60)}twf();
+
+// ═══ CHIP MODULES - RECALCULATED FOR COMPACT TILING (NO GAPS) ═══
+// Grid: 100% x 100%
+// Rows: Memory (0-40), Compute (40-80), IO (80-100)
+const CM=[
+{id:'sram_512kb',name:'Weight\nSRAM 512KB',arch:'512KB Storage',icon:'💾',x:0,y:0,w:50,h:40,file:'sram_512kb.v',desc:'<strong>512KB SRAM</strong> for weights. 128-bit bus. Power-gated: <code>ce & domain_en[0]</code>.',specs:['512KB','128-bit bus','19-bit addr','MBIST testable'],code:`<span class="inst">sram_512kb</span> wm(.<span class="port">ce</span>(wce & pde[<span class="num">0</span>]));`},
+{id:'sram_128kb',name:'Feature\nSRAM 128KB',arch:'Scratchpad',icon:'📦',x:50,y:0,w:50,h:40,file:'sram_128kb.v',desc:'<strong>128KB</strong> scratchpad for feature maps. <code>domain_en[1]</code>.',specs:['128KB','128-bit bus','17-bit addr'],code:`<span class="inst">sram_128kb</span> fm(.<span class="port">ce</span>(fce & pde[<span class="num">1</span>]));`},
+{id:'pe_array',name:'PE Array\n32 Units',arch:'XNOR Grid',icon:'⚡',x:0,y:40,w:40,h:40,file:'pe_array.v',desc:'<strong>32 parallel PEs</strong> — XNOR+popcount computation engine.',specs:['32 parallel units','XNOR + popcount','128-bit bus','Single-cycle'],code:`<span class="kw">generate for</span>(i<32) <span class="inst">processing_element</span> pe(...);\n<span class="kw">endgenerate</span>`},
+{id:'conv_engine',name:'Conv\nEngine',arch:'3×3 Window',icon:'🔲',x:40,y:40,w:30,h:40,file:'conv_engine.v',desc:'<strong>3×3 convolution</strong> with line buffers feeding PE array.',specs:['Sliding window','Line buffers','Multi-channel'],code:`window = {row0, row1, row2};`},
+{id:'detector_core',name:'Detector\nCore',arch:'Master FSM',icon:'🧠',x:70,y:40,w:30,h:40,file:'detector_core.v',desc:'<strong>Master FSM</strong> — brain. Coordinates SRAMs, PE array, conv engine, detection head.',specs:['Coordinates all sub-modules','Neural inference sequencing','Dual SRAM interface','Detection output pipeline'],code:`<span class="inst">detector_core</span> #(<span class="num">256</span>,<span class="num">80</span>,<span class="num">32</span>) det(...);`},
+{id:'det_head',name:'Detection\nHead',arch:'Classify+BBox',icon:'🎯',x:0,y:80,w:20,h:20,file:'detection_head.v',desc:'<strong>Argmax</strong> over 80 classes + bounding box regression.',specs:['80-class argmax','Coordinate regression','8-bit confidence'],code:`<span class="kw">for</span>(c<80) <span class="kw">if</span>(score[c]>max)...`},
+{id:'pe_xnor',name:'PE\nXNOR',arch:'Binary Neuron',icon:'🔮',x:20,y:80,w:10,h:20,file:'processing_element.v',desc:'Atomic <strong>XNOR + popcount</strong> unit. Replaces floating-point MAC.',specs:['XNOR = multiply','Popcount = accumulate','Minimal area'],code:`xnor = ~(w ^ a);\nacc = popcount(xnor);`},
+{id:'sync_2ff',name:'Sync\n2FF',arch:'CDC',icon:'🔒',x:30,y:80,w:10,h:20,file:'sync_2ff.v',desc:'<strong>10 dual-FF synchronizers</strong> for clock domain crossing safety.',specs:['10 instances','Dual FF','Prevents metastability'],code:`{sync_out,ff1} <= {ff1,async_in};`},
+{id:'pll',name:'PLL',arch:'Clock Synth',icon:'⏱',x:40,y:80,w:12,h:20,file:'clock_generator.v',desc:'<strong>PLL</strong>: clk_ext → clk_core + clk_io + locked.',specs:['Dual clock','Lock detect','Test bypass'],code:`<span class="inst">clock_generator</span> pll(.<span class="port">locked</span>(pll_locked));`},
+{id:'rst_ctrl',name:'RST',arch:'Sequencer',icon:'🔄',x:52,y:80,w:12,h:20,file:'reset_controller.v',desc:'Waits for <strong>pll_locked & power_good</strong> before releasing resets.',specs:['Startup sequencing','Multi-domain resets'],code:`<span class="inst">reset_controller</span> rc(...);`},
+{id:'pwr_ctrl',name:'PWR',arch:'Domains',icon:'🔋',x:64,y:80,w:12,h:20,file:'power_controller.v',desc:'<strong>4 power domains</strong>. Reports power_good.',specs:['4 domains','Dynamic gating','Power-good'],code:`<span class="inst">power_controller</span> pc(...);`},
+{id:'jtag_tap',name:'JTAG',arch:'IEEE 1149.1',icon:'🔧',x:76,y:80,w:12,h:20,file:'jtag_tap.v',desc:'<strong>JTAG</strong> 5-wire debug. Controls test_mode, scan_en, mbist_en.',specs:['IEEE 1149.1','Scan control','MBIST trigger'],code:`<span class="inst">jtag_tap</span> jtag(.<span class="port">mbist_en</span>(mbist_en));`},
+{id:'mbist',name:'MBIST',arch:'Mem Test',icon:'🧪',x:88,y:80,w:12,h:20,file:'mbist_controller.v',desc:'<strong>March test</strong> on weight SRAM. Triggered by JTAG.',specs:['March algorithm','JTAG triggered','Pass → LED[1]'],code:`<span class="inst">mbist_controller</span> mb(.<span class="port">pass</span>(mbist_pass));`}
+];
+
+function buildChip(){
+const layer=document.getElementById('blocksLayer'),leg=document.getElementById('chipLegend');
+CM.forEach((m,i)=>{const b=document.createElement('div');b.className='mb';b.dataset.i=i;b.style.cssText=`left:${m.x}%;top:${m.y}%;width:${m.w}%;height:${m.h}%`;b.innerHTML=`<span class="mb-icon">${m.icon}</span><span class="mb-name">${m.name.replace(/\n/g,'<br>')}</span>`;b.onclick=e=>{e.stopPropagation();selectMod(i)};layer.appendChild(b);
+const li=document.createElement('div');li.className='lg-item';li.innerHTML=`<span style="width:6px;height:6px;border-radius:2px;border:1px solid rgba(34,211,238,.25)"></span>${m.id}`;li.onclick=()=>{if(!document.getElementById('chipWrap').classList.contains('open'))dissectChip();setTimeout(()=>selectMod(i),500)};leg.appendChild(li)});
+document.getElementById('chipSealed').addEventListener('click',closeMod);
+}
+
+function dissectChip(){document.getElementById('chipWrap').classList.add('open');document.getElementById('chipLegend').style.opacity='1';document.getElementById('detEmpty').innerHTML='<h3>Explore the Die</h3><p>Click any module block to see its architecture, signals, and Verilog code.</p>'}
+
+let activeM=-1;
+function selectMod(i){const m=CM[i];activeM=i;
+document.querySelectorAll('.mb').forEach((b,j)=>{b.classList.remove('active','dimmed');if(j===i)b.classList.add('active');else b.classList.add('dimmed')});
+document.getElementById('detEmpty').style.display='none';
+const p=document.getElementById('detPanel');p.className='det vis';
+p.innerHTML=`<h2>${m.name.replace(/\n/g,' ')}</h2><div class="det-arch">${m.arch}</div><div class="det-file">${m.file}</div><div class="det-rule"></div><div class="det-desc">${m.desc}</div><ul class="det-specs">${m.specs.map(s=>`<li>${s}</li>`).join('')}</ul><div class="det-code">${m.code}</div><button class="det-close" onclick="closeMod()">✕ Deselect</button>`;
+if(window.innerWidth<=960)setTimeout(()=>p.scrollIntoView({behavior:'smooth'}),200)}
+
+function closeMod(){activeM=-1;document.querySelectorAll('.mb').forEach(b=>b.classList.remove('active','dimmed'));document.getElementById('detPanel').className='det';document.getElementById('detEmpty').style.display='block'}
+
+// ═══ VERILOG ═══
+const VSRC=`// chip_top.v\n// Complete fabricable chip - Top level\n// Power ports removed for simulation compatibility\n\nmodule chip_top(\n    input wire clk_ext,\n    input wire rst_ext_n,\n    input wire [7:0] pixel_data,\n    input wire pixel_valid,\n    input wire frame_start,\n    output wire [7:0] bbox_x,\n    output wire [7:0] bbox_y,\n    output wire [7:0] bbox_w,\n    output wire [7:0] bbox_h,\n    output wire [6:0] class_id,\n    output wire [7:0] confidence,\n    output wire detection_valid,\n    output wire frame_done,\n    input wire test_mode,\n    input wire scan_en,\n    input wire scan_in,\n    output wire scan_out,\n    input wire tck,\n    input wire tms,\n    input wire tdi,\n    output wire tdo,\n    input wire trst_n,\n    output wire [3:0] status_led,\n    output wire chip_ready\n);\n\n    wire clk_core, clk_io, pll_locked;\n    wire rst_n, rst_core_n, rst_io_n;\n    wire power_good;\n    wire [3:0] power_domain_en;\n\n    wire [18:0] weight_addr;\n    wire [127:0] weight_wdata, weight_rdata;\n    wire weight_we, weight_ce;\n\n    wire [16:0] fmap_addr;\n    wire [127:0] fmap_wdata, fmap_rdata;\n    wire fmap_we, fmap_ce;\n\n    wire [7:0]  pixel_data_sync;\n    wire        pixel_valid_sync, frame_start_sync;\n\n    wire [7:0]  bbox_x_int, bbox_y_int, bbox_w_int, bbox_h_int;\n    wire [6:0]  class_id_int;\n    wire [7:0]  confidence_int;\n    wire        detection_valid_int, frame_done_int;\n\n    wire [31:0] scan_chain;\n    wire        mbist_en, mbist_done, mbist_pass;\n\n    // ---- Clock Generator ----\n    clock_generator pll_inst(\n        .clk_ref(clk_ext), .rst_n(rst_ext_n), .test_mode(test_mode),\n        .clk_core(clk_core), .clk_io(clk_io), .locked(pll_locked)\n    );\n\n    // ---- Reset Controller ----\n    reset_controller reset_ctrl(\n        .clk_core(clk_core), .clk_io(clk_io),\n        .rst_ext_n(rst_ext_n), .pll_locked(pll_locked),\n        .power_good(power_good), .test_mode(test_mode),\n        .rst_core_n(rst_core_n), .rst_io_n(rst_io_n), .rst_n(rst_n)\n    );\n\n    // ---- Power Controller ----\n    power_controller power_ctrl(\n        .clk(clk_core), .rst_n(rst_n), .test_mode(test_mode),\n        .power_good(power_good), .domain_en(power_domain_en)\n    );\n\n    // ---- Weight SRAM 512 KB ----\n    sram_512kb weight_memory(\n        .clk(clk_core),\n        .ce(weight_ce & power_domain_en[0]),\n        .we(weight_we),\n        .addr(weight_addr),\n        .wdata(weight_wdata),\n        .rdata(weight_rdata),\n        .test_mode(test_mode),\n        .scan_en(scan_en)\n    );\n\n    // ---- Feature SRAM 128 KB ----\n    sram_128kb feature_memory(\n        .clk(clk_core),\n        .ce(fmap_ce & power_domain_en[1]),\n        .we(fmap_we),\n        .addr(fmap_addr),\n        .wdata(fmap_wdata),\n        .rdata(fmap_rdata),\n        .test_mode(test_mode),\n        .scan_en(scan_en)\n    );\n\n    // ---- Input Synchronizers ----\n    genvar i;\n    generate\n        for (i = 0; i < 8; i = i + 1) begin : pixel_sync\n            sync_2ff sync_pix(\n                .clk(clk_core), .rst_n(rst_core_n),\n                .async_in(pixel_data[i]),\n                .sync_out(pixel_data_sync[i])\n            );\n        end\n    endgenerate\n\n    sync_2ff sync_valid(\n        .clk(clk_core), .rst_n(rst_core_n),\n        .async_in(pixel_valid), .sync_out(pixel_valid_sync)\n    );\n\n    sync_2ff sync_frame(\n        .clk(clk_core), .rst_n(rst_core_n),\n        .async_in(frame_start), .sync_out(frame_start_sync)\n    );\n\n    // ---- Detector Core ----\n    detector_core #(\n        .IMG_WIDTH(256), .IMG_HEIGHT(256),\n        .NUM_CLASSES(80), .NUM_PE(32)\n    ) detector_inst(\n        .clk(clk_core), .rst_n(rst_core_n),\n        .enable(power_domain_en[2]),\n        .pixel_data(pixel_data_sync),\n        .pixel_valid(pixel_valid_sync),\n        .frame_start(frame_start_sync),\n        .weight_addr(weight_addr),\n        .weight_data(weight_rdata),\n        .weight_ce(weight_ce),\n        .fmap_addr(fmap_addr),\n        .fmap_wdata(fmap_wdata),\n        .fmap_rdata(fmap_rdata),\n        .fmap_we(fmap_we),\n        .fmap_ce(fmap_ce),\n        .bbox_x(bbox_x_int), .bbox_y(bbox_y_int),\n        .bbox_w(bbox_w_int), .bbox_h(bbox_h_int),\n        .class_id(class_id_int),\n        .confidence(confidence_int),\n        .detection_valid(detection_valid_int),\n        .frame_done(frame_done_int),\n        .scan_en(scan_en),\n        .scan_in(scan_chain[0]),\n        .scan_out(scan_chain[1])\n    );\n\n    // ---- Output Registers ----\n    reg [7:0] bbox_x_r, bbox_y_r, bbox_w_r, bbox_h_r;\n    reg [6:0] class_id_r;\n    reg [7:0] confidence_r;\n    reg       detection_valid_r, frame_done_r;\n\n    always @(posedge clk_io or negedge rst_io_n) begin\n        if (!rst_io_n) begin\n            bbox_x_r <= 0; bbox_y_r <= 0;\n            bbox_w_r <= 0; bbox_h_r <= 0;\n            class_id_r <= 0; confidence_r <= 0;\n            detection_valid_r <= 0; frame_done_r <= 0;\n        end else begin\n            bbox_x_r <= bbox_x_int;\n            bbox_y_r <= bbox_y_int;\n            bbox_w_r <= bbox_w_int;\n            bbox_h_r <= bbox_h_int;\n            class_id_r <= class_id_int;\n            confidence_r <= confidence_int;\n            detection_valid_r <= detection_valid_int;\n            frame_done_r <= frame_done_int;\n        end\n    end\n\n    assign bbox_x          = bbox_x_r;\n    assign bbox_y          = bbox_y_r;\n    assign bbox_w          = bbox_w_r;\n    assign bbox_h          = bbox_h_r;\n    assign class_id        = class_id_r;\n    assign confidence      = confidence_r;\n    assign detection_valid = detection_valid_r;\n    assign frame_done      = frame_done_r;\n\n    // ---- JTAG ----\n    jtag_tap jtag_inst(\n        .tck(tck), .tms(tms), .tdi(tdi), .tdo(tdo), .trst_n(trst_n),\n        .test_mode(test_mode), .scan_en(scan_en), .mbist_en(mbist_en)\n    );\n\n    // ---- MBIST ----\n    mbist_controller mbist_weight(\n        .clk(clk_core), .rst_n(rst_n), .enable(mbist_en),\n        .mem_addr(weight_addr), .mem_wdata(weight_wdata),\n        .mem_rdata(weight_rdata), .mem_we(weight_we),\n        .mem_ce(weight_ce), .done(mbist_done), .pass(mbist_pass)\n    );\n\n    assign scan_out   = scan_chain[31];\n    assign chip_ready = pll_locked & power_good & rst_n;\n    assign status_led = {pll_locked, power_good, mbist_pass, detection_valid_int};\n\nendmodule`.split('\n');
+function hl(t){let s=t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');s=s.replace(/(\/\/.*)$/gm,'<span class="cm">$1</span>');s=s.replace(/\b(clock_generator|reset_controller|power_controller|sram_512kb|sram_128kb|sync_2ff|detector_core|jtag_tap|mbist_controller)\b/g,'<span class="inst">$1</span>');s=s.replace(/\b(module|endmodule|input|output|wire|reg|assign|always|begin|end|if|else|posedge|negedge|genvar|generate|endgenerate|for)\b/g,'<span class="kw">$1</span>');s=s.replace(/\b(\d+('b[01]+|'h[0-9a-fA-F]+|'d\d+)?)\b/g,'<span class="num">$1</span>');s=s.replace(/\.([\w]+)\(/g,'.<span class="port">$1</span>(');return s}
+function renderCode(c,l,h=[],hc='#22d3ee'){c.innerHTML='';l.forEach((t,i)=>{const n=i+1,d=document.createElement('div');d.className='code-line'+(h.includes(n)?' highlighted':'');if(h.includes(n))d.style.setProperty('--highlight-color',hc);d.innerHTML=`<span class="code-line-num">${n}</span><span class="code-line-text">${hl(t)}</span>`;c.appendChild(d)})}
+
+// Port groups
+const PG=[{title:'Clock & Reset',accent:'#22d3ee',desc:'Primary clock and reset.',ports:[{name:'clk_ext',dir:'input',width:'1-bit',icon:'⏱',desc:'External clock for PLL.',code:'input wire clk_ext,'},{name:'rst_ext_n',dir:'input',width:'1-bit',icon:'🔄',desc:'Active-low reset. Synchronized across domains.',code:'input wire rst_ext_n,'}]},{title:'Pixel Input Interface',accent:'#a78bfa',desc:'Vision data synchronized via 2FF.',ports:[{name:'pixel_data[7:0]',dir:'input',width:'8-bit',icon:'📷',desc:'8-bit grayscale. Each bit gets sync_2ff.',code:'input wire [7:0] pixel_data,'},{name:'pixel_valid',dir:'input',width:'1-bit',icon:'✓',desc:'Valid strobe. Own sync_2ff.',code:'input wire pixel_valid,'},{name:'frame_start',dir:'input',width:'1-bit',icon:'▶',desc:'Frame start. Resets detector counters.',code:'input wire frame_start,'}]},{title:'Detection Outputs',accent:'#34d399',desc:'Bounding box, class, confidence — registered in clk_io.',ports:[{name:'bbox_x/y/w/h[7:0]',dir:'output',width:'8-bit',icon:'📍',desc:'Bounding box rectangle coordinates.',code:'output wire [7:0] bbox_x/y/w/h,'},{name:'class_id[6:0]',dir:'output',width:'7-bit',icon:'🏷',desc:'Detected class (0-79).',code:'output wire [6:0] class_id,'},{name:'confidence[7:0]',dir:'output',width:'8-bit',icon:'📊',desc:'Detection confidence (0-255).',code:'output wire [7:0] confidence,'},{name:'detection_valid',dir:'output',width:'1-bit',icon:'✅',desc:'Valid detection. Drives status_led[0].',code:'output wire detection_valid,'},{name:'frame_done',dir:'output',width:'1-bit',icon:'🏁',desc:'Frame processing complete.',code:'output wire frame_done,'}]},{title:'DFT — Design for Test',accent:'#fbbf24',desc:'Scan chain for manufacturing test.',ports:[{name:'test_mode',dir:'input',width:'1-bit',icon:'🧪',desc:'Global test enable. Controlled by JTAG.',code:'input wire test_mode,'},{name:'scan_en/in/out',dir:'input',width:'1-bit',icon:'🔗',desc:'Scan chain: enable, serial in/out.',code:'input wire scan_en, scan_in; output wire scan_out;'}]},{title:'JTAG — IEEE 1149.1',accent:'#f472b6',desc:'5-wire debug port.',ports:[{name:'tck/tms/tdi/tdo/trst_n',dir:'input',width:'1-bit',icon:'🔧',desc:'Standard JTAG TAP interface.',code:'input wire tck,tms,tdi,trst_n; output wire tdo;'}]},{title:'Status & Control',accent:'#60a5fa',desc:'Chip status outputs.',ports:[{name:'status_led[3:0]',dir:'output',width:'4-bit',icon:'💡',desc:'{pll_locked, power_good, mbist_pass, detection_valid}.',code:'output wire [3:0] status_led,'},{name:'chip_ready',dir:'output',width:'1-bit',icon:'🟢',desc:'pll_locked & power_good & rst_n.',code:'output wire chip_ready'}]}];
+function buildPorts(){const c=document.getElementById('portContainer');PG.forEach(g=>{const s=document.createElement('div');s.className='port-section-group reveal';s.innerHTML=`<h3><span class="accent" style="background:${g.accent}"></span>${g.title}</h3><p>${g.desc}</p>`;const gr=document.createElement('div');gr.className='port-grid';g.ports.forEach(p=>{const card=document.createElement('div');card.className='glass port-card';card.style.setProperty('--card-accent',g.accent);card.innerHTML=`<div class="port-header"><div class="port-icon" style="background:${g.accent}15;border:1px solid ${g.accent}30">${p.icon}</div><span class="port-name">${p.name}</span><span class="port-badge ${p.dir}">${p.dir}</span></div><div class="port-width">${p.width}</div><div class="port-desc">${p.desc}</div><div class="port-code"><span class="kw">${p.dir}</span> <span class="kw">wire</span> ${p.code.replace(/^(input|output) wire /,'')}</div>`;card.onclick=()=>card.classList.toggle('expanded');gr.appendChild(card)});s.appendChild(gr);c.appendChild(s)})}
+
+const archModules=[{name:'clock_generator',title:'Clock Generator',icon:'⏱',desc:'PLL-based clock synthesis. Generates clk_core and clk_io from clk_ext.',color:'#22d3ee',specs:['Dual clock','Lock detection','Test bypass'],code:`<span class="inst">clock_generator</span> pll_inst(\n    .<span class="port">clk_ref</span>(clk_ext),\n    .<span class="port">clk_core</span>(clk_core),\n    .<span class="port">clk_io</span>(clk_io),\n    .<span class="port">locked</span>(pll_locked)\n);`},{name:'reset_controller',title:'Reset Controller',icon:'🔄',desc:'Synchronizes reset across domains. Waits for PLL lock and power_good.',color:'#a78bfa',specs:['Multi-domain','PLL gating','Power-good'],code:`<span class="inst">reset_controller</span> reset_ctrl(\n    .<span class="port">pll_locked</span>(pll_locked),\n    .<span class="port">rst_core_n</span>(rst_core_n)\n);`},{name:'power_controller',title:'Power Controller',icon:'⚡',desc:'Manages 4 power domains. Reports power_good.',color:'#fbbf24',specs:['4 domains','Dynamic gating'],code:`<span class="inst">power_controller</span> power_ctrl(\n    .<span class="port">domain_en</span>(power_domain_en)\n);`},{name:'sram_512kb',title:'Weight SRAM (512KB)',icon:'💾',desc:'512KB for neural network weights. 128-bit bus. Power-gated.',color:'#34d399',specs:['512 KB','128-bit','MBIST'],code:`<span class="inst">sram_512kb</span> weight_memory(\n    .<span class="port">ce</span>(weight_ce & power_domain_en[<span class="num">0</span>])\n);`},{name:'sram_128kb',title:'Feature SRAM (128KB)',icon:'📦',desc:'128KB scratchpad for feature maps.',color:'#fb7185',specs:['128 KB','128-bit'],code:`<span class="inst">sram_128kb</span> feature_memory(\n    .<span class="port">ce</span>(fmap_ce & power_domain_en[<span class="num">1</span>])\n);`},{name:'detector_core',title:'Detector Core',icon:'🧠',desc:'Neural inference engine. 256×256, 80 classes, 32 PEs.',color:'#c084fc',specs:['256×256','80 classes','32 PEs'],code:`<span class="inst">detector_core</span> #(<span class="num">256</span>,<span class="num">80</span>,<span class="num">32</span>)\n  detector_inst(...);`},{name:'jtag_tap',title:'JTAG TAP',icon:'🔧',desc:'IEEE 1149.1 Test Access Port.',color:'#60a5fa',specs:['IEEE 1149.1','5-wire','MBIST trigger'],code:`<span class="inst">jtag_tap</span> jtag_inst(\n    .<span class="port">mbist_en</span>(mbist_en)\n);`},{name:'mbist_controller',title:'MBIST Controller',icon:'🧪',desc:'Memory Built-In Self-Test for weight SRAM.',color:'#f472b6',specs:['March test','Pass/fail'],code:`<span class="inst">mbist_controller</span> mbist_weight(\n    .<span class="port">pass</span>(mbist_pass)\n);`}];
+function buildArch(){const g=document.getElementById('archGrid');archModules.forEach(m=>{const c=document.createElement('div');c.className='glass module-card reveal';c.innerHTML=`<div class="module-header"><div class="module-icon" style="background:${m.color}15;border:1px solid ${m.color}30">${m.icon}</div><div><div class="module-title">${m.title}</div><div class="module-instance">${m.name}</div></div></div><div class="module-desc">${m.desc}</div><div class="module-specs">${m.specs.map(s=>`<span class="spec-pill">${s}</span>`).join('')}</div><div class="module-expand-hint"><span class="arrow">▼</span> Click to view Verilog</div><div class="module-code">${m.code}</div>`;c.onclick=()=>c.classList.toggle('expanded');g.appendChild(c)})}
+
+const datapathStages=[{label:'pixel_data[7:0]',sub:'External Input',color:'#22d3ee',desc:'8-bit pixel data arrives asynchronous to clk_core.'},{label:'sync_2ff ×10',sub:'CDC Synchronizer',color:'#a78bfa',desc:'10 parallel 2FF synchronizers for safe domain crossing.'},{label:'pixel_data_sync',sub:'Synchronized',color:'#34d399',desc:'Clean data in clk_core domain.'},{label:'detector_core',sub:'Neural Inference',color:'#c084fc',desc:'32 PEs process through conv layers. Reads 512KB weight SRAM.'},{label:'Output Registers',sub:'I/O Domain',color:'#f472b6',desc:'Results captured in clk_io flip-flops.'},{label:'bbox + class_id',sub:'Chip Outputs',color:'#fbbf24',desc:'Final outputs on chip pins.'}];
+function buildDatapath(){const c=document.getElementById('datapathContainer');datapathStages.forEach((s,i)=>{const d=document.createElement('div');d.className='reveal';d.innerHTML=`<div class="glass stage-card" style="--stage-color:${s.color}"><div class="stage-number" style="background:${s.color}15;color:${s.color};border:1px solid ${s.color}30">${i+1}</div><div class="stage-label" style="color:${s.color}">${s.label}</div><div class="stage-sublabel">${s.sub}</div><div class="stage-desc">${s.desc}</div></div>${i<datapathStages.length-1?`<div class="stage-arrow" style="color:${s.color}">↓</div>`:''}`;c.appendChild(d)})}
+
+const codeSections=[{title:'Module Declaration & Ports',color:'#22d3ee',lines:[5,30],highlights:Array.from({length:26},(_,i)=>5+i),desc:'All 29 chip I/O signals.'},{title:'Internal Wire Declarations',color:'#a78bfa',lines:[32,55],highlights:[32,33,34,35,37,38,39,41,42,43,45,46,48,49,50,51,53,54],desc:'Dual clocks, 128-bit memory buses, scan chain.'},{title:'Clock Generator (PLL)',color:'#34d399',lines:[57,61],highlights:[58,59,60,61],desc:'PLL: clk_ext → clk_core + clk_io + locked.'},{title:'Reset Controller',color:'#fbbf24',lines:[63,70],highlights:Array.from({length:8},(_,i)=>63+i),desc:'Domain-specific synchronized resets.'},{title:'Power Controller',color:'#f472b6',lines:[72,76],highlights:[73,74,75,76],desc:'4 power domains with dynamic gating.'},{title:'Weight SRAM (512KB)',color:'#60a5fa',lines:[78,87],highlights:Array.from({length:10},(_,i)=>78+i),desc:'512KB with gated chip enable.'},{title:'Feature SRAM (128KB)',color:'#fb7185',lines:[89,98],highlights:Array.from({length:10},(_,i)=>89+i),desc:'128KB scratchpad.'},{title:'Input Synchronizers',color:'#c084fc',lines:[100,118],highlights:Array.from({length:19},(_,i)=>100+i),desc:'Generate block: 8 sync_2ff + 2 control.'},{title:'Detector Core',color:'#22d3ee',lines:[120,145],highlights:Array.from({length:26},(_,i)=>120+i),desc:'Neural engine with 32 PEs.'},{title:'Output Registers',color:'#fbbf24',lines:[147,169],highlights:Array.from({length:23},(_,i)=>147+i),desc:'Registered in clk_io domain.'},{title:'Output Assignments',color:'#34d399',lines:[171,178],highlights:Array.from({length:8},(_,i)=>171+i),desc:'Register → chip pads.'},{title:'JTAG TAP',color:'#f472b6',lines:[180,184],highlights:[181,182,183,184],desc:'IEEE 1149.1.'},{title:'MBIST Controller',color:'#60a5fa',lines:[186,192],highlights:Array.from({length:7},(_,i)=>186+i),desc:'March test on weight SRAM.'},{title:'Final Assignments',color:'#fbbf24',lines:[194,196],highlights:[194,195,196],desc:'scan_out, chip_ready, status_led.'}];
+function buildCodeExplorer(){const nav=document.getElementById('codeNav'),cc=document.getElementById('codeContent'),tag=document.getElementById('codeTag');renderCode(cc,VSRC,codeSections[0].highlights,codeSections[0].color);const sty=document.createElement('style');sty.textContent=codeSections.map((s,i)=>`.code-nav-item:nth-child(${i+1}).active::before{background:${s.color}}`).join('\n');document.head.appendChild(sty);codeSections.forEach((s,i)=>{const it=document.createElement('div');it.className='code-nav-item'+(i===0?' active':'');it.innerHTML=`<div style="display:flex;align-items:center"><span class="nav-item-num" style="background:${s.color}15;color:${s.color};border:1px solid ${s.color}30">${i+1}</span><span class="nav-item-title">${s.title}</span></div><div class="nav-item-desc">${s.desc}</div><div class="nav-item-lines">Lines ${s.lines[0]}–${s.lines[1]}</div>`;it.onclick=()=>{nav.querySelectorAll('.code-nav-item').forEach(e=>e.classList.remove('active'));it.classList.add('active');renderCode(cc,VSRC,s.highlights,s.color);tag.textContent=s.title;tag.style.background=s.color+'15';tag.style.color=s.color;const f=cc.querySelector('.highlighted');if(f)f.scrollIntoView({behavior:'smooth',block:'center'})};nav.appendChild(it)})}
+
+const lineExplanations=[{lines:[1,3],tag:'Comment',tagColor:'#34d399',title:'File Header',desc:'Top-level chip module identification.'},{lines:[5,5],tag:'Module',tagColor:'#22d3ee',title:'Module Declaration',desc:'module chip_top( — maps to physical die.'},{lines:[6,7],tag:'Input',tagColor:'#a78bfa',title:'Clock & Reset',desc:'clk_ext + rst_ext_n.'},{lines:[8,10],tag:'Input',tagColor:'#a78bfa',title:'Pixel Interface',desc:'pixel_data[7:0], pixel_valid, frame_start.'},{lines:[11,18],tag:'Output',tagColor:'#34d399',title:'Detection Outputs',desc:'bbox, class_id, confidence, valid, done.'},{lines:[19,22],tag:'DFT',tagColor:'#fbbf24',title:'Scan Chain',desc:'test_mode, scan_en, scan_in/out.'},{lines:[23,27],tag:'JTAG',tagColor:'#f472b6',title:'JTAG Port',desc:'5-wire IEEE 1149.1.'},{lines:[28,30],tag:'Status',tagColor:'#60a5fa',title:'Status Outputs',desc:'status_led + chip_ready.'},{lines:[32,35],tag:'Wire',tagColor:'#a78bfa',title:'Clock/Reset Wires',desc:'Dual clocks, domain resets.'},{lines:[37,43],tag:'Wire',tagColor:'#a78bfa',title:'Memory Buses',desc:'128-bit SRAM interfaces.'},{lines:[45,54],tag:'Wire',tagColor:'#a78bfa',title:'Internal Signals',desc:'Sync pixels, detection results, scan chain.'},{lines:[57,61],tag:'Instance',tagColor:'#c084fc',title:'PLL',desc:'clock_generator pll_inst.'},{lines:[63,70],tag:'Instance',tagColor:'#c084fc',title:'Reset Controller',desc:'Waits for lock + power_good.'},{lines:[72,76],tag:'Instance',tagColor:'#c084fc',title:'Power Controller',desc:'4 domain enables.'},{lines:[78,98],tag:'Instance',tagColor:'#c084fc',title:'SRAM Blocks',desc:'512KB weights + 128KB features.'},{lines:[100,118],tag:'Generate',tagColor:'#fbbf24',title:'Synchronizers',desc:'8 parallel sync_2ff + 2 control.'},{lines:[120,145],tag:'Instance',tagColor:'#c084fc',title:'Detector Core',desc:'Heart of the chip. 32 PEs.'},{lines:[147,169],tag:'Always',tagColor:'#f472b6',title:'Output Registers',desc:'clk_io domain registration.'},{lines:[171,178],tag:'Assign',tagColor:'#34d399',title:'Pin Assigns',desc:'Register → chip pads.'},{lines:[180,184],tag:'Instance',tagColor:'#c084fc',title:'JTAG TAP',desc:'Test infrastructure.'},{lines:[186,192],tag:'Instance',tagColor:'#c084fc',title:'MBIST',desc:'March test.'},{lines:[194,196],tag:'Assign',tagColor:'#34d399',title:'Final Logic',desc:'scan_out, chip_ready, status_led.'}];
+function buildLineExplorer(){const list=document.getElementById('lineList'),ce=document.getElementById('lineCodeContent');renderCode(ce,VSRC);lineExplanations.forEach((item,i)=>{const d=document.createElement('div');d.className='line-item'+(i===0?' active':'');d.innerHTML=`<div class="line-item-header"><span class="line-item-range">L${item.lines[0]}${item.lines[1]!==item.lines[0]?'–'+item.lines[1]:''}</span><span class="line-item-tag" style="background:${item.tagColor}15;color:${item.tagColor};border:1px solid ${item.tagColor}30">${item.tag}</span></div><div class="line-item-title">${item.title}</div><div class="line-item-desc">${item.desc}</div>`;d.onclick=()=>{list.querySelectorAll('.line-item').forEach(e=>e.classList.remove('active'));d.classList.add('active');const hls=[];for(let l=item.lines[0];l<=item.lines[1];l++)hls.push(l);renderCode(ce,VSRC,hls,item.tagColor);const f=ce.querySelector('.highlighted');if(f)f.scrollIntoView({behavior:'smooth',block:'center'})};list.appendChild(d)})}
+
+const specsRows=[{signal:'bbox_x',width:'8-bit',dir:'Out',domain:'clk_io',desc:'BBox X (0–255)'},{signal:'bbox_y',width:'8-bit',dir:'Out',domain:'clk_io',desc:'BBox Y'},{signal:'bbox_w',width:'8-bit',dir:'Out',domain:'clk_io',desc:'Width'},{signal:'bbox_h',width:'8-bit',dir:'Out',domain:'clk_io',desc:'Height'},{signal:'class_id',width:'7-bit',dir:'Out',domain:'clk_io',desc:'Class (0–79)'},{signal:'confidence',width:'8-bit',dir:'Out',domain:'clk_io',desc:'Confidence'},{signal:'detection_valid',width:'1-bit',dir:'Out',domain:'clk_io',desc:'Valid flag'},{signal:'frame_done',width:'1-bit',dir:'Out',domain:'clk_io',desc:'Frame done'},{signal:'pixel_data',width:'8-bit',dir:'In',domain:'External',desc:'Pixel input'},{signal:'chip_ready',width:'1-bit',dir:'Out',domain:'Comb.',desc:'Master ready'}];
+function buildSpecs(){document.getElementById('specsTable').innerHTML=`<thead><tr><th>Signal</th><th>Width</th><th>Dir</th><th>Clock Domain</th><th>Description</th></tr></thead><tbody>${specsRows.map(r=>`<tr><td class="signal">${r.signal}</td><td>${r.width}</td><td><span class=\"dir-badge ${r.dir==='In'?'in':'out'}\">${r.dir}</span></td><td class="domain">${r.domain}</td><td>${r.desc}</td></tr>`).join('')}</tbody>`}
+
+function initReveal(){const o=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible')})},{threshold:.08,rootMargin:'-30px'});document.querySelectorAll('.reveal').forEach(el=>o.observe(el))}
+
+document.addEventListener('DOMContentLoaded',()=>{
+buildChip();buildPorts();buildArch();buildDatapath();buildCodeExplorer();buildLineExplorer();buildSpecs();
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>40)},{passive:true});
+requestAnimationFrame(()=>requestAnimationFrame(initReveal));
+});
+</script>
+</body>
+</html>
